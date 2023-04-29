@@ -1,0 +1,98 @@
+﻿@page "/demographic"
+@inject NavigationManager nm
+
+<h3>Demographic</h3>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-lg-2 mb-5">
+            <div style="margin-top:15%">
+                @* <h4>@String.Join(" ", @cat.Split('_'))</h4>*@
+                <div class="card border-primary">
+                    <div class="card-body shadow-sm p-3">
+                        <section>
+                            <h5 class="text-black-50 mb-4">
+                            </h5>
+                            <h4 class="mb-3 fw-200">Please Answer the Following Questions.</h4>
+                            <div class=" mb-4">
+                                <div class="form-floating mb-3">
+                                    <select class="form-select" aria-label="Floating label select example">
+                                        <option value="-1" selected>Select Gender</option>
+
+                                        <option value="50">Male</option>
+                                        <option value="50">Female</option>
+                                        <option value="60">Binary</option>
+                                        <option value="60">Prefer Not to Say</option>
+
+                                    </select>
+                                    <label for="floatingSelect" class="label">Select the gender .</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <select class="form-select" aria-label="Floating label select example">
+                                        <option value="-1" selected>Select Race</option>
+
+                                        <option value="50">White</option>
+                                        <option value="50">BLack</option>
+                                        <option value="60"> African American</option>
+                                        <option value="60">American Indian</option>
+                                        <option value="60">Alaska Native</option>
+                                        <option value="60">Asian</option>
+                                        <option value="60"> Native Hawaiian</option>
+                                        <option value="60"> Pacific Islander</option>
+
+                                    </select>
+                                    <label for="floatingSelect" class="label">Select Your Race</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <select class="form-select" aria-label="Floating label select example">
+                                        <option value="-1" selected>Select Ethnicity</option>
+                                        <option value="50">American People</option>
+                                        <option value="50">White People</option>
+                                        <option value="60">Asian American</option>
+                                        <option value="60">Hispanic</option>
+                                        <option value="60">African American</option>
+                                        <option value="60">Alaska Natives</option>
+
+                                    </select>
+                                    <label for="floatingSelect" class="label">Select the Ethnic Group.</label>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Enter the Height.</label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" >
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Enter the Weight.</label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" >
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Enter the Neck Circumference.</label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1">
+                                </div>
+                               
+
+                            </div>
+
+                            <div>
+                                <button class="btn btn-primary me-2" @onclick="submit">Next</button>
+                                @* <button @onclick="()=>UpdatePatentResponses(quiz[QuestionNo].Qno,quiz[QuestionNo].Question,SelectedChoice)" class="btn btn-primary btn-next" disabled="@NextIsDisabled">Next</button>*@
+
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@code {
+
+    void submit()
+    {
+        nm.NavigateTo("/st");
+    }
+}

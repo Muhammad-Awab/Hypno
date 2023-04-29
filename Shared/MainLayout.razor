@@ -1,0 +1,28 @@
+﻿@inherits LayoutComponentBase
+@using Hypnos.Authentication
+@inject AuthenticationStateProvider authStateProvider
+@inject NavigationManager nm
+
+<PageTitle>MVCAuthentication</PageTitle>
+
+
+
+    <main>
+         
+
+            @Body
+      
+    </main>
+
+
+@code {
+
+
+    private async Task logout()
+    {
+        var customAuthStateProvider = (CustomAuthenticationStateProvider)authStateProvider;
+        await customAuthStateProvider.UpdateAuthenticationState(null);
+        nm.NavigateTo("/", true);
+    }
+
+}
