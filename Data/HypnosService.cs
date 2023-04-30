@@ -357,180 +357,42 @@ namespace Hypnos.Data
                 },
 
                 //all
-
-                new HypnosQuestion
+                   new HypnosQuestion
                 {
-                     Qno=34,
-                     Category="SL",Title="all",
-                    Question = "Sitting and reading",
-                      Choices = new List<string> {"Never", "slight", "moderate", "high","Please Select"},
+                    Qno=4,
+                    Category="sa",Title="all",
+                    Question = "How would you rate your quality of sleep ",
+                    Choices = new List<string> {"Poor", "fair", "good", "excellent"},
                     AnswerIndex = 1,
                     Score = 3
                 },
-                  new HypnosQuestion
-                {
-                     Qno=34,
-                     Category="SL",Title="all",
-                    Question = "Sitting and watching T.V.",
-                      Choices = new List<string> {"Never", "slight", "moderate", "high","Please Select"},
-                    AnswerIndex = 1,
-                    Score = 3
-                },
-                    new HypnosQuestion
-                {
-                     Qno=34,
-                     Category="SL",Title="all",
-                    Question = "Sitting inactive in a public space",
-                      Choices = new List<string> {"Never", "slight", "moderate", "high","Please Select"},
-                    AnswerIndex = 1,
-                    Score = 3
-                },
-                      new HypnosQuestion
-                {
-                     Qno=34,
-                     Category="SL",Title="all",
-                    Question = "As a passenger in a car for an hour without a break",
-                      Choices = new List<string> {"Never", "slight", "moderate", "high","Please Select"},
-                    AnswerIndex = 1,
-                    Score = 3
-                },
-                        new HypnosQuestion
-                {
-                     Qno=34,
-                     Category="SL",Title="all",
-                    Question = "Lying down to rest in the afternoon when circumstances permit",
-                      Choices = new List<string> {"Never", "slight", "moderate", "high","Please Select"},
-                    AnswerIndex = 1,
-                    Score = 3
-                },
-                          new HypnosQuestion
-                {
-                     Qno=34,
-                     Category="SL",Title="all",
-                    Question = "Sitting and talking to someone",
-                      Choices = new List<string> {"Never", "slight", "moderate", "high","Please Select"},
-                    AnswerIndex = 1,
-                    Score = 3
-                },
-                            new HypnosQuestion
-                {
-                     Qno=34,
-                     Category="SL",Title="all",
-                    Question = "Sitting quietly after lunch without alcohol",
-                      Choices = new List<string> {"Never", "slight", "moderate", "high","Please Select"},
-                    AnswerIndex = 1,
-                    Score = 3
-                },
-                              new HypnosQuestion
-                {
-                     Qno=34,
-                     Category="SL",Title="all",
-                    Question = "Driving in the car while stopped for a few minutes",
-                      Choices = new List<string> {"Never", "slight", "moderate", "high","Please Select"},
-                    AnswerIndex = 1,
-                    Score = 3
-                },
-
-
-
-
 
                  new HypnosQuestion
                 {
                     Qno=4,
                     Category="sa",Title="all",
-                    Question = "When do you typically have your last caffeinated beverage of the day?",
-                    Choices = new List<string> {"Yes", "No","Please Select"},
+                    Question = "What is your typical sleep time",
+                    Choices = new List<string> {"Eneter specific value"},
                     AnswerIndex = 1,
                     Score = 3
                 },
+
                    new HypnosQuestion
                 {
                     Qno=4,
                     Category="sa",Title="all",
-                    Question = "Do you drink alcohol leading up to bedtime?",
-                    Choices = new List<string> {"Yes", "No","Please Select"},
+                    Question = "What is your typical wake time",
+                    Choices = new List<string> {"Eneter specific value"},
                     AnswerIndex = 1,
                     Score = 3
                 },
-                     new HypnosQuestion
+
+                new HypnosQuestion
                 {
                     Qno=4,
                     Category="sa",Title="all",
-                    Question = "Do you often exercise leading up to bedtime?",
-                    Choices = new List<string> {"Yes", "No","Please Select"},
-                    AnswerIndex = 1,
-                    Score = 3
-                },
-                       new HypnosQuestion
-                {
-                    Qno=4,
-                    Category="sa",Title="all",
-                    Question = "Do you often shower or bathe leading up to bedtime?",
-                    Choices = new List<string> {"Yes", "No","Please Select"},
-                    AnswerIndex = 1,
-                    Score = 3
-                },
-                         new HypnosQuestion
-                {
-                    Qno=4,
-                    Category="sa",Title="all",
-                    Question = "Do you regularly take any medications or substances that have sedating side effects?",
-                    Choices = new List<string> {"Yes", "No","Please Select"},
-                    AnswerIndex = 1,
-                    Score = 3
-                },
-                           new HypnosQuestion
-                {
-                    Qno=4,
-                    Category="sa",Title="all",
-                    Question = "Do you regularly take any medications or substances that have alerting side effects?",
-                    Choices = new List<string> {"Yes", "No","Please Select"},
-                    AnswerIndex = 1,
-                    Score = 3
-                },
-                             new HypnosQuestion
-                {
-                    Qno=4,
-                    Category="sa",Title="all",
-                    Question = "Are you frequently told you're a loud snorer?",
-                    Choices = new List<string> {"Yes", "No","Please Select"},
-                    AnswerIndex = 1,
-                    Score = 3
-                },
-                               new HypnosQuestion
-                {
-                    Qno=4,
-                    Category="sa",Title="all",
-                    Question = "Have you ever woken yourself up from snoring loudly?",
-                    Choices = new List<string> {"Yes", "No","Please Select"},
-                    AnswerIndex = 1,
-                    Score = 3
-                },
-                                 new HypnosQuestion
-                {
-                    Qno=4,
-                    Category="sa",Title="all",
-                    Question = "Has anyone ever said they've seen you stop breathing in your sleep?",
-                    Choices = new List<string> {"Yes", "No","Please Select"},
-                    AnswerIndex = 1,
-                    Score = 3
-                },
-                                   new HypnosQuestion
-                {
-                    Qno=4,
-                    Category="sa",Title="all",
-                    Question = "Have you ever experienced dream or nightmares in which you felt like your body and/or muscles were paralyzed?",
-                    Choices = new List<string> {"Yes", "No","Please Select"},
-                    AnswerIndex = 1,
-                    Score = 3
-                },
-                                     new HypnosQuestion
-                {
-                    Qno=4,
-                    Category="sa",Title="all",
-                    Question = "Have you ever experienced hallucination during the period of time that you're just beginning to fall asleep? Or conversely, as you're justing waking up?",
-                    Choices = new List<string> {"Yes", "No","Please Select"},
+                    Question = "How much sleep do you get on average",
+                    Choices = new List<string> {"<4 hrs", "4-6 hrs", "6-7 hrs", "7-8 hrs",">8 hrs"},
                     AnswerIndex = 1,
                     Score = 3
                 },
@@ -540,6 +402,15 @@ namespace Hypnos.Data
                     Category="sa",Title="all",
                     Question = "Do your sleep habits interrupt your bed partner",
                     Choices = new List<string> {"Yes", "No","Please Select"},
+                    AnswerIndex = 1,
+                    Score = 3
+                },
+                                         new HypnosQuestion
+                {
+                    Qno=4,
+                    Category="sa",Title="all",
+                    Question = "Do you snore loudly",
+                    Choices = new List<string> {"Yes", "No","I don't know","Please Select"},
                     AnswerIndex = 1,
                     Score = 3
                 },
@@ -570,6 +441,34 @@ namespace Hypnos.Data
                     AnswerIndex = 1,
                     Score = 3
                 },
+                                             new HypnosQuestion
+                {
+                    Qno=4,
+                    Category="sa",Title="all",
+                    Question = "How much time do you spend at work",
+                    Choices = new List<string> {"Part time"," <6 hrs", "6-8 hrs", "8-10 hrs", "10-12 hrs", ">12 hrs"},
+                    AnswerIndex = 1,
+                    Score = 3
+                },
+                                             new HypnosQuestion
+                {
+                    Qno=4,
+                    Category="sa",Title="all",
+                    Question = "How much alcohol do you drink",
+                    Choices = new List<string> {"Never", "<1 drink per week", "1-3 drinks per week", "3-5 drinks per week", "1 daily", "2-3 daily", ">3 daily"},
+                    AnswerIndex = 1,
+                    Score = 3
+                },
+                    new HypnosQuestion
+                {
+                    Qno=4,
+                    Category="sa",Title="all",
+                    Question = "How much coffee/caffeine do you drink",
+                    Choices = new List<string> {"Never", "Occasionally", "1 daily", "2-3 daily", ">3 daily"},
+                    AnswerIndex = 1,
+                    Score = 3
+                },
+
                                                new HypnosQuestion
                 {
                     Qno=4,
@@ -611,6 +510,15 @@ namespace Hypnos.Data
                     Qno=4,
                     Category="sa",Title="all",
                     Question = "Do you smoke tobacco cigarettes",
+                    Choices = new List<string> {"Yes", "No","Please Select"},
+                    AnswerIndex = 1,
+                    Score = 3
+                },
+  new HypnosQuestion
+                {
+                    Qno=4,
+                    Category="sa",Title="all",
+                    Question = "Do you smoke nicotine vapes or e-cigarettes",
                     Choices = new List<string> {"Yes", "No","Please Select"},
                     AnswerIndex = 1,
                     Score = 3
