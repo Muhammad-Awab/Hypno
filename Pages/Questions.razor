@@ -4,7 +4,7 @@
     int choiceIndex = 0;
 
 }
-@foreach (var choice in QuestionsChoice[int.Parse(QuestionNo)].Choices)
+@foreach (var choice in QuestionsChoice[3].Choices)
 {
     @if (@choice == "freetext")
     {
@@ -17,13 +17,13 @@
         </button>
         <br />
         choiceIndex++;
+        Qn = int.Parse(QuestionNo);
+        Qn++;
+        QuestionNo = Qn.ToString();
     }
     else
     {
-
-
-
-        <input @onchange="@(() => UpdateChoice(choice))"
+       <input @onchange="@(() => UpdateChoice(choice))"
        type="radio"
        class="form-check-input"
        name="@QuestionNo"
@@ -34,6 +34,9 @@
         <label class="form-check-label" for="@choiceIndex">@choice</label>
         <br />
         choiceIndex++;
+        Qn = int.Parse(QuestionNo);
+        Qn++;
+        QuestionNo = Qn.ToString();
 
     }
 
@@ -41,19 +44,24 @@
 <span class="text-black-50">Your answer is</span> : <span class="text-success"> @choice1</span>
 @code {
 
+
     [Parameter]
     public List<Hypnos.Data.HypnosQuestion>? QuestionsChoice { get; set; }
     [Parameter]
     public string? QuestionNo { get; set; }
     public string? choice1 { get; set; }
-
+    public int Qn{ get; set; }
     [Parameter]
     public EventCallback<string> SetChoice { get; set; }
 
     protected async Task UpdateChoice(string choice)
     {
         choice1 = choice;
-        await SetChoice.InvokeAsync(choice);
+        
+           
+            await SetChoice.InvokeAsync(choice);
+
+        
         StateHasChanged();
     }
 

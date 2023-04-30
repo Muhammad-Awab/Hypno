@@ -41,16 +41,17 @@ else
                             }
                             <div>
                                 <button class="btn btn-primary me-2" @onclick="Back" disabled="@BackIsDisabled">Back</button>
-                                <button @onclick="()=>UpdatePatentResponses(quiz[QuestionNo].Qno,quiz[QuestionNo].Question,SelectedChoice)" class="btn btn-primary btn-next" disabled="@NextIsDisabled">Next</button>
+                                <button @onclick="()=>NextDiagnose()" class="btn btn-primary btn-next" disabled="@NextIsDisabled">Next</button>
+                                @*<button @onclick="()=>UpdatePatentResponses(quiz[QuestionNo].Qno,quiz[QuestionNo].Question,SelectedChoice)" class="btn btn-primary btn-next" disabled="@NextIsDisabled">Next</button>*@
                                 @if (Done)
                                 {
                                     <button onclick="@SubmitHTML" class="btn btn-success">Download file</button>
 
-                                    <style>
+                                    @*<style>
                                         .btn-next {
                                             display: none;
                                         }
-                                    </style>
+                                    </style>*@
 
                                 }
                             </div>
@@ -72,7 +73,7 @@ else
     public string cat { get; set; }
     List<HypnosQuestion> filteredList { get; set; }
     private List<HypnosQuestion>? quiz { get; set; }
-
+    public int sum = 0;
     private List<PatientResponses> patientResponses = new List<PatientResponses>();
     string? IsChecked;
     int QuestionNo = 0;
@@ -96,12 +97,33 @@ else
     private string? SelectedChoice { get; set; }
     void UpdateScore(string choice)
     {
+        if (choice == "Never")
+        {
+            sum = sum + 0;
+        }
+        else if (choice == "slight")
+        {
+
+            sum = sum + 1;
+        }
+        else if (choice == "moderate")
+        {
+
+            sum = sum + 3;
+        }
+        else if (choice == "high")
+        {
+            sum = sum + 3;
+        }
+       
         answer++;
 
         PatientResponses pr = new PatientResponses();
 
         SelectedChoice = choice;
+
         pr.Choices = choice;
+        pr.qn = sum;
 
 
         patientResponses.Add(pr);
@@ -134,7 +156,17 @@ else
             }
         }
     }
-
+    private void NextDiagnose()
+    {
+        if (sum > 10 && sum < 14)
+        {
+            nm.NavigateTo("fetchdata/Sleep_Apnea");
+        }
+        else if (sum > 15 && sum < 20)
+        {
+            nm.NavigateTo("fetchdata/Tobacco");
+        }
+    }
     private void Next()
     {
         SelectedChoice = "";
