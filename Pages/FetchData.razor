@@ -158,13 +158,13 @@ else
     }
     private void NextDiagnose()
     {
-        if (sum > 10 && sum < 14)
+        if (sum > 4 && sum < 14)
         {
             nm.NavigateTo("fetchdata/Sleep_Apnea");
         }
         else if (sum > 15 && sum < 20)
         {
-            nm.NavigateTo("fetchdata/Tobacco");
+            nm.NavigateTo("fetchdata/Tobacco", forceLoad: true);
         }
     }
     private void Next()
