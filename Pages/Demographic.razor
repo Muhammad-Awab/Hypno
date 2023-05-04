@@ -1,7 +1,9 @@
 ﻿@page "/demographic"
 @inject NavigationManager nm
 
-<h3>Demographic</h3>
+
+
+
 
 <div class="container">
     <div class="row">
@@ -13,6 +15,7 @@
                         <section>
                             <h5 class="text-black-50 mb-4">
                             </h5>
+                            <h3>Demographic</h3>
                             <h4 class="mb-3 fw-200">Please Answer the Following Questions.</h4>
                             <div class=" mb-4">
                                 <div class="form-floating mb-3">
@@ -56,19 +59,33 @@
                                     </select>
                                     <label for="floatingSelect" class="label">Select the Ethnic Group.</label>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Enter the Height.</label>
-                                    <input type="text" class="form-control" id="exampleFormControlInput1" @bind-value="height1">
+                                <div class="row"> 
+                                    
+                                <div class="col-md-3 mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Enter Height in feet</label>
+                                    <input type="text" class="form-control" @bind="@height" id="exampleFormControlInput1" >
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Enter Weight in kg</label>
+                                    <input type="text" class="form-control" @bind="@weight"  id="exampleFormControlInput1">
+                                </div>
+                               <div class="col-md-3 mb-3">
+                                        <br />
+                                        <button class="btn btn-primary mt-2" @onclick="calculatebmi">Calculate</button>
+                               </div>
+                                <div class="col-md-3 mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">BMI</label>
+                                    <input type="text" readonly class="form-control" @bind="@bmi" id="exampleFormControlInput1">
+                                </div>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Enter the Weight.</label>
-                                    <input type="text" class="form-control" id="exampleFormControlInput1" @bind-value="weight1" @onchange(fun())>
-                                </div>
-                            <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Enter the Neck Circumference.</label>
                                     <input type="text" class="form-control" id="exampleFormControlInput1">
                                 </div>
+                               
+
                             </div>
+
                             <div>
                                 <button class="btn btn-primary me-2" @onclick="submit">Next</button>
                                 @* <button @onclick="()=>UpdatePatentResponses(quiz[QuestionNo].Qno,quiz[QuestionNo].Question,SelectedChoice)" class="btn btn-primary btn-next" disabled="@NextIsDisabled">Next</button>*@
@@ -86,7 +103,23 @@
 
 @code {
 
-     void submit()
+    public double height{ get; set; }
+    public double weight { get; set; }
+
+    public double bmi { get; set; }
+    public double meter { get; set; }
+
+
+    public void calculatebmi()
+    {
+        meter = height * 0.304;
+        if (weight > 0 && meter > 0.0 && meter <=2.1336)
+        {
+            
+            bmi = weight / (meter * meter);
+        }
+    }
+    void submit()
     {
         nm.NavigateTo("/st");
     }
