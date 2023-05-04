@@ -3,8 +3,6 @@
 
 <h3>Demographic</h3>
 
-
-
 <div class="container">
     <div class="row">
         <div class="col-md-8 offset-lg-2 mb-5">
@@ -60,20 +58,17 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Enter the Height.</label>
-                                    <input type="text" class="form-control" id="exampleFormControlInput1" >
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" @bind-value="height1">
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Enter the Weight.</label>
-                                    <input type="text" class="form-control" id="exampleFormControlInput1" >
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" @bind-value="weight1" @onchange(fun())>
                                 </div>
-                                <div class="mb-3">
+                            <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Enter the Neck Circumference.</label>
                                     <input type="text" class="form-control" id="exampleFormControlInput1">
                                 </div>
-                               
-
                             </div>
-
                             <div>
                                 <button class="btn btn-primary me-2" @onclick="submit">Next</button>
                                 @* <button @onclick="()=>UpdatePatentResponses(quiz[QuestionNo].Qno,quiz[QuestionNo].Question,SelectedChoice)" class="btn btn-primary btn-next" disabled="@NextIsDisabled">Next</button>*@
@@ -91,7 +86,7 @@
 
 @code {
 
-    void submit()
+     void submit()
     {
         nm.NavigateTo("/st");
     }
