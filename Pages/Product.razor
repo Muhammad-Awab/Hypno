@@ -1,111 +1,122 @@
-﻿@page "/page"
+﻿@page "/product"
 
-<section class="mt-4" style="align-content:center; height:100%">
-    <div class="container mt-4 d-flex justify-content-center">
-        <div class="row">
 
-            <div class="col-md-6">
-                <!-- img slide -->
-                <img src="https://www.sleepfoundation.org/wp-content/uploads/2020/12/BioStrap-Active-Set-scaled.jpg" class="img-fluid" alt="Responsive image" />
-            </div>
-            <div class="col-md-6">
-                <div class="ps-lg-10 mt-6 mt-md-0">
-                    <!-- heading -->
-                    <h1 class="mb-1">Sleep Apnea Device </h1>
-                    <div class="mb-4">
+<style>
+    .row{
+       
+        padding: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-height: 44rem !important;
+    } 
+    .container{
+        background: white;
+    }
+    a{
+        text-decoration:none;
+    }
 
-                        <!-- rating --> <small class="text-warning">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-half"></i>
-                        </small><a href="#" class="ms-2">(30 reviews)</a>
-                    </div>
-                    <div class="fs-4">
-                        <!-- price --><span class="fw-bold text-dark">$32</span> <span class="text-decoration-line-through text-muted">$35</span><span>
-                            <small class="fs-6 ms-2 text-danger">
-                                26%
-                                Off
-                            </small>
-                        </span>
-                    </div>
+    .checked {
+        color: orange;
+    }
+    iframe{
+        width: 100%;
+        /* height: 100% !important; */
+        height: 50vh;
+        margin:auto;
+    }
+</style>
+    <section class="mt-8" style="margin-top:2rem;">
+        <div class="container">
+            <div class="row">
 
-                    <div class="mb-5">
-                        <button type="button" class="btn btn-outline-secondary">Small</button>
-                        <!-- btn --> <button type="button" class="btn btn-outline-secondary">Medium</button>
-                        <!-- btn --> <button type="button" class="btn btn-outline-secondary">High</button>
-                        <!-- input -->
-                        <div class="input-group input-spinner  ">
-                            <input type="button" value="-" class="button-minus  btn  btn-sm " data-field="quantity">
-                            <input type="number" step="1" max="10" value="1" name="quantity" class="quantity-field form-control-sm form-input">
-                            <input type="button" value="+" class="button-plus btn btn-sm " data-field="quantity">
+                <div class="col-md-6">
+                    <!-- img slide -->
+                <img src="https://www.sleepfoundation.org/wp-content/uploads/2020/12/BioStrap-Active-Set-scaled.jpg " class="img-fluid" alt="Responsive image" />
+                   
+                            
+                    
+                   
+                   
+                </div>
+                <div class="col-md-6">
+                    <div class="ps-lg-10 mt-6 mt-md-0">
+                      
+                        <h1 class="mb-1 mt-2">Sleep Apnia Device</h1>
+
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <a href="#" class="ms-2">(30 reviews)</a>
+                        <div class="fs-4 mt-3">
+                            <!-- price --><span class="fw-bold text-dark">$32</span> <span class="text-decoration-line-through text-muted">$35</span><span>
+                                <small class="fs-6 ms-2 text-danger">
+                                    26%
+                                    Off
+                                </small>
+                            </span>
                         </div>
+                       
+                        <hr class="my-6">
+                        
+                        <div class="mb-4">
 
+
+                            <!-- input -->
+                        <div class="col-md-2">
+                            <label for="exampleFormControlInput1" class="form-label">Quantity</label>
+                            <input type="number" class="form-control" id="exampleFormControlInput1" >
+                        </div>
+                        <div class="mt-4">
+                        <button type="button" class="btn btn-outline-secondary">small</button>
+                        <!-- btn --> <button type="button" class="btn btn-outline-secondary">medium</button>
+                        <!-- btn --> <button type="button" class="btn btn-outline-secondary">large</button>
+
+                        </div>
                     </div>
-                    <div class="mt-3 row justify-content-start g-2 align-items-center">
 
-                        <div class="col-md-4 col-4">
-                            <button style="background-color:#F57224;color:white;width:225px;margin-right:50px;padding:0px;height: 44px;
-    font-size: 16px;border-radius:13px;">
-                                <i class="feather-icon icon-shopping-bag me-2"></i>Add to
-                                cart
+
+
+
+                    <button type="button" class="btn text-light mt-2" style="background-color:#F57224; width: 10rem;">
+                                   Buy Now
+                                </button>
+
+
+                    <button type="button" class="btn text-light mt-2" style="background-color:#2ABBE8; width: 10rem;">
+                                Add to cart
                             </button>
-                        </div>
-                        <div class="col-md-4 col-4">
-                            <button type="button" style="background-color:#2ABBE8;color:white;width:225px;margin-right:10px;padding:0px;height: 44px;
-    font-size: 16px;border-radius:13px;">
-                                <i class="feather-icon icon-shopping-bag me-2"></i>Add to
-                                cart
-                            </button>
-                        </div>
-                    </div>
-
-                    @*  <div>
-                    <!-- table -->
-                    <table class="table table-borderless mb-0">
-
-                    <tbody>
-                    <tr>
-                    <td>Availability:</td>
-                    <td>In Stock</td>
-
-                    </tr>
-                    <tr>
-                    <td>Type:</td>
-                    <td>Health & Care</td>
-
-                    </tr>
-                    <tr>
-                    <td>Shipping:</td>
-                    <td><small>01 day shipping.<span class="text-muted">( Free pickup today)</span></small></td>
-
-                    </tr>
-
-
-                    </tbody>
-                    </table>
-
-                    </div>*@
-                    <div class="mt-8">
-                        <!-- dropdown -->
-                        @*                        <div class="dropdown">
-                        <a class="btn btn-outline-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Share
-                        </a>
-
-                        <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#"><i class="bi bi-facebook me-2"></i>Facebook</a></li>
-                        <li><a class="dropdown-item" href="#"><i class="bi bi-twitter me-2"></i>Twitter</a></li>
-                        <li><a class="dropdown-item" href="#"><i class="bi bi-instagram me-2"></i>Instagram</a></li>
-                        </ul>
-                        </div>*@
+                       
+                        
+                        <!-- hr -->
+                        <hr class="my-6">
+                      
+                       
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
+    <section class="container">
+        <div class="text-center pt-4">
+            <h3>Description</h3>
+        <p>
+            Original Bluetooth Handfree with mic Wireless HandfreeWireless Bluetooth Earphones Wireless Bluetooth headset compatible with android and other devices Bluetooth earphone for games Bluetooth Neckband
+            The Bluetooth headset enables you to enjoy great sounds on-the-go.
+            Comfortable and snug fit make sure the headset stays tightly when you are out running, jogging or exercising and doing other activities.
+            The portable, user-friendly magnet design lets the headphones hang like a necklace, very easy to store into your clothing or bag, and not easy to fall off.
+            A good choice as a gift for your friends and family.+Specification:
+        </p>
+
+        <div class="embed-responsive embed-responsive-16by9 mt-4" style="width: 100%;
+    margin: auto">
+            <iframe class="embed-responsive-item"  src="https://www.youtube.com/embed/IMON9zmViu4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        </div>
+    </section>
 @code {
 }
