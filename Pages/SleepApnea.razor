@@ -1,0 +1,300 @@
+﻿@page "/sleepapnea"
+
+<PageTitle>HYPNOS</PageTitle>
+
+@using Hypnos.Data
+@inject HypnosService QuizRepository
+@inject NavigationManager nm;
+@using System.Text;
+@inject IJSRuntime JS
+
+@{
+    int choiceIndex = 0;
+
+}
+
+@if (quiz == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="container sticky-top ">
+        <div class="row">
+            <div class="col-md-8 offset-lg-2 mb-5 bg-primary">
+                <h6>Ess : @ess</h6>
+                @*<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Launch demo modal
+            </button>*@
+            </div>
+        </div>
+    </div>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-8 offset-lg-2 mb-5">
+
+                <div>
+
+
+
+                    <div class="card border-primary">
+                        <div class="card-body shadow-sm p-3">
+                            <h2>@cat</h2>
+                            <h5 class="text-black-50 mb-4">
+                                Question @(
+                            QuestionNo + 1
+                            )/@QuestionLength
+                            </h5>
+                            @foreach (var choice in filteredList)
+                            {
+
+                                <b class="text-black-50">Question No @choice.Qno</b>
+                                <h5 class="mb-3">@choice.Question ?</h5>
+
+                                int j = 0;
+                                <div class="row">
+
+
+                                    @foreach (var choice1 in @choice.Choices)
+                                    {
+                                        <div class="col-md-6 mb-4">
+                                            <div class="card">
+                                                <div class="card-body">
+
+
+                                                    <input @onchange="UpdateScore"
+                                               type="radio"
+                                               class="form-check-input"
+                                               name="@choiceIndex"
+                                               id="@choiceIndex"
+                                               autocomplete="off"
+                                               value="@choice.Choices[j]" />
+                                                    <label class="form-check-label" for="@choice1">@choice1</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        j++;
+                                    }
+                                </div>
+                                choiceIndex++;
+                            }
+                            <div>
+                                <button @onclick="()=>NextDiagnose()" class="btn btn-primary btn-next" disabled="@NextIsDisabled">Next</button>
+                                @*<button @onclick="()=>UpdatePatentResponses(quiz[QuestionNo].Qno,quiz[QuestionNo].Question,SelectedChoice)" class="btn btn-primary btn-next" disabled="@NextIsDisabled">Next</button>*@
+                                @if (Done)
+                                {
+                                    <button onclick="@SubmitHTML" class="btn btn-success">Download file</button>
+
+                                    @*<style>
+                            .btn-next {
+                            display: none;
+                            }
+                            </style>*@
+
+                                }
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/IMON9zmViu4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+@code {
+
+        [Parameter]
+        public string cat { get; set; }
+        List<HypnosQuestion> filteredList { get; set; }
+    private List<HypnosQuestion>? quiz { get; set; }
+    public int ess = 0;
+    private List<PatientResponses> patientResponses = new List<PatientResponses>();
+    string? IsChecked;
+    int QuestionNo = 0;
+    int QuestionLength;
+    int answer = 1;
+    bool BackIsDisabled = true;
+    bool NextIsDisabled = false;
+    bool Done = false;
+    public string choice { get; set; }
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        quiz = await QuizRepository.GetQuestions();
+        filteredList = quiz.Where(x => (x.Title == "Sleep_Apnea") || (x.Title == "copy_all")).ToList();
+    QuestionLength = filteredList.Count();
+
+    }
+
+    private string? SelectedChoice { get; set; }
+    void UpdateScore(ChangeEventArgs args)
+    {
+        choice = args.Value.ToString();
+        if (choice == "Never")
+        {
+            ess = ess + 1;
+        }
+        else if (choice == "slight")
+        {
+
+            ess = ess + 2;
+        }
+        else if (choice == "moderate")
+        {
+
+            ess = ess + 3;
+        }
+        else if (choice == "high")
+        {
+            ess = ess + 4;
+        }
+
+        answer++;
+
+        PatientResponses pr = new PatientResponses();
+
+        SelectedChoice = choice;
+
+        pr.Choices = choice;
+        pr.qn = ess;
+
+
+        patientResponses.Add(pr);
+
+        if (QuestionLength == answer)
+        {
+
+            Done = true;
+        }
+    }
+
+    void UpdatePatentResponses(int qn, string question, string choice)
+    {
+        PatientResponses pr = new PatientResponses();
+        pr.qn = qn;
+        pr.Question = question;
+        pr.Choices = choice;
+        if (patientResponses.Any(item => item.qn == pr.qn))
+        {
+
+            patientResponses.Where(x => x.qn == pr.qn).ToList().ForEach(x => x.Choices = pr.Choices);
+            Next();
+        }
+        else
+        {
+            if (!string.IsNullOrEmpty(choice as string))
+            {
+                patientResponses.Add(pr);
+                Next();
+            }
+        }
+    }
+    private void NextDiagnose()
+    {
+        if (ess > 10)
+        {
+            nm.NavigateTo("product", forceLoad: true);
+        }
+        else if (ess < 10)
+        {
+            nm.NavigateTo("sleep_Apnea", forceLoad: true);
+        }
+    }
+    private void Next()
+    {
+        SelectedChoice = "";
+        if (QuestionLength == answer)
+        {
+            Done = true;
+            NextIsDisabled = true;
+
+        }
+        else
+        {
+            answer++;
+            QuestionNo++;
+        }
+
+        IsButtonDisable();
+
+    }
+
+
+    private void Back()
+    {
+        QuestionNo--;
+        IsButtonDisable();
+
+
+    }
+
+    private void IsButtonDisable()
+    {
+        if (QuestionNo <= 0)
+        {
+            BackIsDisabled = true;
+        }
+        else
+
+            BackIsDisabled = false;
+    }
+
+    private async Task SubmitHTML()
+    {
+        var render = new IronPdf.ChromePdfRenderer();
+        var doc = render.RenderHtmlAsPdf(htmtable());
+        var fileName = "iron.pdf";
+        using var streamRef = new DotNetStreamReference(stream: doc.Stream);
+        await JS.InvokeVoidAsync("SubmitHTML", fileName, streamRef);
+    }
+
+    public string htmtable()
+    {
+        StringBuilder tableBuilder = new StringBuilder();
+        tableBuilder.Append("<table class='table table-striped'>");
+        tableBuilder.Append("<thead><tr><th>QNo.</th><th>Responses</th><th>Answers</th></tr></thead>");
+
+        tableBuilder.Append("<tbody>");
+        foreach (var res in patientResponses)
+        {
+            tableBuilder.Append("<tr>");
+            tableBuilder.Append($"<td>{res.qn}</td>");
+            tableBuilder.Append($"<td>{res.Question}</td>");
+            tableBuilder.Append($"<td>{res.Choices}</td>");
+            tableBuilder.Append("</tr>");
+        }
+        tableBuilder.Append("</tbody>");
+        tableBuilder.Append("</table>");
+        string tableHtml = tableBuilder.ToString();
+        return tableHtml;
+    }
+
+
+
+
+
+}
+
+
