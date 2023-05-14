@@ -55,14 +55,7 @@ namespace Hypnos.Data.DAL
                 cmd.Parameters.AddWithValue("@Password", ee.Password);
                 
                 cmd.Parameters.AddWithValue("@Name", ee.Name);
-                cmd.Parameters.AddWithValue("@BMI", ee.BMI);
-                cmd.Parameters.AddWithValue("@Height", ee.Height);
-                cmd.Parameters.AddWithValue("@Weight", ee.Weight);
-                cmd.Parameters.AddWithValue("@Neck_Circumference", ee.Neck_Circumference);
-                cmd.Parameters.AddWithValue("@Address", ee.Address);
-                cmd.Parameters.AddWithValue("@DOB", ee.DOB);
-                cmd.Parameters.AddWithValue("@Pharmacy", ee.Pharmacy);
-                cmd.Parameters.AddWithValue("@Payment_Info", ee.Payment_Info);
+               
 
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.ExecuteNonQuery();
@@ -75,7 +68,7 @@ namespace Hypnos.Data.DAL
             }
         }
 
-        public static void UpdatePassword(String? UserId, String? Password)
+        public static void UpdatePassword(String? UserName, String? Password)
         {
             try
             {
@@ -83,8 +76,8 @@ namespace Hypnos.Data.DAL
 
                 SqlConnection con = DBHelper.GetConnection();
                 con.Open();
-                SqlCommand cmd = new SqlCommand("U_SP_UpdatePassword", con);
-                cmd.Parameters.AddWithValue("@UserId", UserId);
+                SqlCommand cmd = new SqlCommand("HYPNOS_U_SP_UpdatePassword", con);
+                cmd.Parameters.AddWithValue("@UserName", UserName);
                 cmd.Parameters.AddWithValue("@Password", Password);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.ExecuteNonQuery();
