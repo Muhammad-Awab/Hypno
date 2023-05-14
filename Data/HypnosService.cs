@@ -370,6 +370,96 @@ namespace Hypnos.Data
                     Score = 3
                 },
 
+
+
+
+
+
+                 //
+                 //
+                 //
+
+
+
+                     //all
+
+
+                  new HypnosQuestion
+                {
+                    Qno=11,
+                    Category="sa",Title="copy_all",
+                    Question = "Sitting and reading ",
+                    Choices = new List<string> {"Never", "slight","moderate","high" },
+                    AnswerIndex = 1,
+                    Score = 3
+                },
+                          new HypnosQuestion
+                {
+                    Qno=12,
+                    Category="sa",Title="copy_all",
+                    Question = "Sitting and watching TV",
+                    Choices = new List<string> {"Never", "slight","moderate","high" },
+                    AnswerIndex = 1,
+                    Score = 3
+                },
+                              new HypnosQuestion
+                {
+                    Qno=13,
+                    Category="sa",Title="copy_all",
+                    Question = "Sitting inactive in a public space",
+                    Choices = new List<string> {"Never", "slight","moderate","high" },
+                    AnswerIndex = 1,
+                    Score = 3
+                },
+                                  new HypnosQuestion
+                {
+                    Qno=14,
+                    Category="sa",Title="copy_all",
+                    Question = "As a passenger in a car for one hour without a break",
+                    Choices = new List<string> {"Never", "slight", "moderate", "high" },
+                    AnswerIndex = 1,
+                    Score = 3
+                },
+                                      new HypnosQuestion
+                {
+                    Qno=15,
+                    Category="sa",Title="copy_all",
+                    Question = "Lying down to rest in the afternoon ",
+                    Choices = new List<string> {"Never", "slight", "moderate", "high" },
+                    AnswerIndex = 1,
+                    Score = 3
+                },
+                                          new HypnosQuestion
+                {
+                    Qno=16,
+                    Category="sa",Title="copy_all",
+                    Question = "Sitting and talking to someone",
+                    Choices = new List<string> {"Never", "slight", "moderate", "high" },
+                    AnswerIndex = 1,
+                    Score = 3
+                                          },
+                        new HypnosQuestion
+                {
+                    Qno=17,
+                    Category="sa",Title="copy_all",
+                    Question = "Sitting quietfly after lunch without alcohol",
+                    Choices = new List<string> {"Never", "slight", "moderate", "high" },
+                    AnswerIndex = 1,
+                    Score = 3
+                },
+                 new HypnosQuestion
+                {
+                    Qno=18,
+                    Category="sa",Title="copy_all",
+                    Question = "In a care, while stopped for a few minutes in traffic",
+                    Choices = new List<string> {"Never", "slight", "moderate", "high" },
+                    AnswerIndex = 1,
+                    Score = 3
+                },
+
+
+
+
             };
 
 
